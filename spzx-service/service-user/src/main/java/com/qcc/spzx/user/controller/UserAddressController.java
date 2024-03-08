@@ -51,8 +51,6 @@ public class UserAddressController {
     @Operation(summary = "根据id获取地址信息")
     @GetMapping("/getUserAddress/{id}")
     public UserAddress getUserAddress(@PathVariable Long id) {
-        System.out.println("main");
-        System.out.println("2");
         return userAddressService.getUserAddress(id);
     }
 }
