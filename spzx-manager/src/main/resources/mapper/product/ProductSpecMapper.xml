@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qcc.spzx.manager.mapper.ProductSpecMapper">
+    <sql id="columns">
+        id, spec_name, spec_value, create_time, update_time, is_deleted
+    </sql>
+
+<!--    void save(ProductSpec productSpec);-->
+    <insert id="save">
+        insert
+        into product_spec(<include refid="columns"></include>)
+        values(#{id}, #{specName}, #{specValue}, now(), now(), 0)
+    </insert>
+
+<!--    void update(ProductSpec productSpec);-->
+    <update id="update">
+        update product_spec
+        set
+            <if test="specName != null and specName != ''">
+                spec_name = #{specName},
+            </if>
+            <if test="specValue != null and specValue != ''">
+                spec_value = #{specValue},
+            </if>
+            update_time = now()
+        where is_deleted = 0 and id = #{id}
+
+    </update>
+
+<!--    void delete(Long id);-->
+    <update id="delete">
+        update product_spec
+        set is_deleted = 1, update_time = now()
+        where id = #{id}
+    </update>
+
+<!--    List<ProductSpec> findByPage();-->
+    <select id="findByPage" resultType="com.qcc.spzx.model.entity.product.ProductSpec">
+        select <include refid="columns"></include>
+        from product_spec
+        where is_deleted = 0
+        order by id desc
+    </select>
+
+<!--    List<ProductSpec> findAll();-->
+    <select id="findAll" resultType="com.qcc.spzx.model.entity.product.ProductSpec">
+        select <include refid="columns"></include>
+        from product_spec
+        where is_deleted = 0
+        order by id desc
+    </select>
+
+</mapper>

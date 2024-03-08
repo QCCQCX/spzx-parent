@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qcc.spzx.manager.mapper.BrandMapper">
+
+    <sql id="columns">
+        id, name, logo, create_time, update_time, is_deleted
+    </sql>
+
+<!--    void save(Brand brand);-->
+    <insert id="save">
+        insert
+        into brand(id, name, logo, create_time, update_time, is_deleted)
+        values(#{id}, #{name}, #{logo}, now(), now(), 0)
+    </insert>
+
+<!--    void updateById(Brand brand);-->
+    <update id="updateById">
+        update brand
+        set
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="logo != null and logo != ''">
+                logo = #{logo},
+            </if>
+            update_time = now()
+        where is_deleted = 0 and id = #{id}
+    </update>
+
+<!--    void deleteById(Long id);-->
+    <update id="deleteById">
+        update brand
+        set is_deleted = 1, update_time = now()
+        where id = #{id}
+    </update>
+
+    <!--    List<Brand> findByPage();-->
+    <select id="findByPage" resultType="com.qcc.spzx.model.entity.product.Brand">
+        select <include refid="columns"></include>
+        from brand
+        where is_deleted = 0
+        order by id desc
+    </select>
+</mapper>

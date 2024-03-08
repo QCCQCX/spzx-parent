@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qcc.spzx.manager.mapper.SysRoleUserMapper">
+<!--    void doAssign(Long userId, Long roleId);-->
+    <insert id="doAssign">
+        insert
+        into sys_user_role(user_id, role_id, create_time, update_time, is_deleted)
+        values(#{userId}, #{roleId}, now(), now(), 0)
+    </insert>
+
+    <!--    void deleteByUserId(Long userId);-->
+    <delete id="deleteByUserId">
+        delete
+        from sys_user_role
+        where is_deleted = 0 and user_id = #{userId}
+    </delete>
+
+
+</mapper>
