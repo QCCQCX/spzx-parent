@@ -51,11 +51,11 @@
 ![](http://s5316urxq.bkt.clouddn.com/SPZX/5.png)
 
 
-## 三、快速上手
+## 三
 
 ### Minio图片存储
 
-1）在spzx-manager中的 `application-dev.yml` 中修改如下配置为你自己的，注意账号密码以及ip，我用的是本地的ip：
+1）在spzx-manager中的 `application-dev.yml` 中修改如下配置，注意账号密码以及ip：
 
 ```
 minio:
@@ -67,13 +67,13 @@ minio:
 
 2）cmd进入到Monio所在目录
 
-3）启动Minio，输入minio.exe server D:\minio\data，账号密码都是minioadmin
+3）启动Minio
 
 ![](http://s5316urxq.bkt.clouddn.com/SPZX/6.png)
 
 ### MySQL 数据库
 
-1）在spzx-manager中的 `application-dev.yml` 中修改如下配置为你自己的，注意账号密码以及ip：
+1）在spzx-manager中的 `application-dev.yml` 中修改如下配置，注意账号密码以及ip：
 
 ```yml
 spring:
@@ -89,7 +89,7 @@ spring:
 
 ### Redis
 
-1）在spzx-manager中的 `application-dev.yml` 中修改如下 Redis 配置为你自己的：
+1）在spzx-manager中的 `application-dev.yml` 中修改如下 Redis 配置：
 
 ```yml
 # Redis的相关配置
@@ -99,7 +99,7 @@ data:
     port: 6379
 ```
 
-2）在spzx-server-gateway中的 `application-dev.yml` 中修改如下 Redis 配置为你自己的：
+2）在spzx-server-gateway中的 `application-dev.yml` 中修改如下 Redis 配置：
 
 ```yml
 # Redis的相关配置
@@ -111,7 +111,7 @@ data:
 
 ### Nacos
 
-1）在spzx-server-gateway中的 `application-dev.yml` 中修改如下 nacos配置为你自己的，我用的是本机的，根据实际情况修改即可：
+1）在spzx-server-gateway中的 `application-dev.yml` 中修改如下 nacos配置，根据实际情况修改即可：
 
 ```yml
 cloud:
@@ -126,7 +126,7 @@ cloud:
 
 ### 注意：
 
-**service-cart，service-order，service-pay，service-product，service-user**模块中的 `application-dev.yml` 中都要修改如下（**mysql，redis，nacos**）配置为你自己的：
+**service-cart，service-order，service-pay，service-product，service-user**模块中的 `application-dev.yml` 中都要修改如下（**mysql，redis，nacos**）配置：
 
 ```yml
 cloud:
