@@ -51,7 +51,7 @@
 ![](http://s5316urxq.bkt.clouddn.com/SPZX/5.png)
 
 
-## 三
+## 三、配置
 
 ### Minio图片存储
 
